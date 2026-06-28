@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost's Music Player - Documentation</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syncopate:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --black: #050505;
+            --dark: #0a0a0c;
+            --dark-card: #0e0e10;
+            --purple: #9d4edd;
+            --purple-light: #c8b6ff;
+            --purple-dim: rgba(157, 78, 221, 0.15);
+            --text: #e0e0e0;
+            --text-bright: #ffffff;
+            --muted: #888;
+            --border-color: #222;
+            --border-subtle: #1a1a1a;
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-title: 'Syncopate', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--text);
+            font-family: var(--font-main);
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--purple);
+            border-radius: 4px;
+        }
+
+        .docs-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--dark);
+            border-right: 1px solid var(--border-subtle);
+            padding: 30px 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 30px 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-title {
+            font-family: var(--font-title);
+            font-size: 1rem;
+            color: var(--purple);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-subtitle {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
+        .nav-section {
+            margin-bottom: 25px;
+        }
+
+        .nav-section-title {
+            padding: 0 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 10px 30px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: rgba(157, 78, 221, 0.1);
+            color: var(--purple-light);
+            border-left-color: var(--purple);
+        }
+
+        .nav-link.active {
+            background: var(--purple-dim);
+            color: var(--purple-light);
+            border-left-color: var(--purple);
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 60px 80px;
+            max-width: 900px;
+        }
+
+        .doc-header {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--border-subtle);
+        }
+
+        .doc-title {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: var(--text-bright);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .doc-subtitle {
+            font-size: 1.2rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: 20px;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--text-bright);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .subsection-title {
+            font-size: 1.3rem;
+            color: var(--purple-light);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        code {
+            background: var(--dark-card);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--purple-light);
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: var(--dark-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: var(--text);
+        }
+
+        .info-box {
+            background: var(--purple-dim);
+            border-left: 4px solid var(--purple);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            color: var(--purple-light);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box-title {
+            font-weight: 700;
+            color: #ffc107;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            background: var(--dark-card);
+            border: 1px solid var(--border-subtle);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            color: var(--purple);
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            background: var(--purple-light);
+            transform: translateX(-5px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--dark-card);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        th {
+            background: var(--purple-dim);
+            color: var(--purple-light);
+            font-weight: 700;
+        }
+
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--purple);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(157, 78, 221, 0.4);
+        }
+
+        .scroll-top-btn.visible {
+            display: flex;
+        }
+
+        .scroll-top-btn:hover {
+            background: var(--purple-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(157, 78, 221, 0.6);
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--purple-dim);
+            color: var(--purple-light);
+            border: 1px solid var(--purple);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+            font-family: var(--font-main);
+        }
+
+        .copy-btn:hover {
+            background: var(--purple);
+            color: white;
+        }
+
+        .copy-btn.copied {
+            background: #27c93f;
+            border-color: #27c93f;
+            color: white;
+        }
+
+        pre {
+            position: relative;
+        }
+
+        @media (max-width: 1024px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+
+            .content {
+                padding: 40px 30px;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="docs-container">
+
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="sidebar-title">GHOST'S MUSIC PLAYER</h1>
+                <p class="sidebar-subtitle">Documentation</p>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <a href="#overview" class="nav-link active">Overview</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#quick-start" class="nav-link">Quick Start</a>
+                <a href="#included-music" class="nav-link">Included Music</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Configuration</div>
+                <a href="#adding-music" class="nav-link">Adding Your Music</a>
+                <a href="#moods" class="nav-link">Using Moods</a>
+                <a href="#controls" class="nav-link">Basic Controls</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Usage</div>
+                <a href="#implementation" class="nav-link">Using In Your Game</a>
+                <a href="#zones" class="nav-link">Music Zones</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Reference</div>
+                <a href="#performance" class="nav-link">Performance</a>
+                <a href="#multiplayer" class="nav-link">Multiplayer</a>
+                <a href="#troubleshooting" class="nav-link">Troubleshooting</a>
+            </div>
+        </nav>
+
+        <main class="content">
+            <a href="work.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+
+            <div class="doc-header">
+                <h1 class="doc-title">Ghost's Music Player</h1>
+                <p class="doc-subtitle">An easy-to-use music player for your game. It includes
+                    animations, mood-based music, and an example you can drop into your game.</p>
+            </div>
+
+            <section id="overview" class="section">
+                <h2 class="section-title">Overview</h2>
+                <p>This is a drag and drop music system for Roblox. The demo place has everything working out of the
+                    box. Just open it and hit play.</p>
+
+                <video controls
+                    style="width: 100%; border-radius: 8px; margin: 20px 0; border: 1px solid var(--border-subtle);">
+                    <source src="music-showcase.mp4" type="video/mp4">
+                    Your browser doesn't support video playback :(
+                </video>
+
+                <p>What's included:</p>
+                <ul>
+                    <li>Demo place with working examples</li>
+                    <li>Music player with animated UI</li>
+                    <li>Zone system (music changes based on location)</li>
+                    <li>Mood-based playlists</li>
+                    <li>All the scripts you need</li>
+                </ul>
+            </section>
+
+            <section id="features" class="section">
+                <h2 class="section-title">Features</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fas fa-music feature-icon"></i>
+                        <span>Mood-based playlists</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-palette feature-icon"></i>
+                        <span>Smooth UI animations</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-eye-slash feature-icon"></i>
+                        <span>Auto-hiding UI</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-random feature-icon"></i>
+                        <span>Shuffle & skip tracks</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-volume-up feature-icon"></i>
+                        <span>Volume controls & fading</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-compact-disc feature-icon"></i>
+                        <span>Rotating album art</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quick-start" class="section">
+                <h2 class="section-title">Quick Start</h2>
+
+                <h3 class="subsection-title">1. Open the demo place</h3>
+                <p>Grab the <code>.rbxl</code> file and open it in Roblox Studio. Hit play and everything's already
+                    wired
+                    up.</p>
+
+                <h3 class="subsection-title">2. Walk around</h3>
+                <p>Try walking in and out of the shop. The music switches automatically. That's the zone system at work.
+                </p>
+
+                <h3 class="subsection-title">3. Check the example script</h3>
+                <p>Look inside:</p>
+                <pre><code>StarterPlayer
+└── StarterPlayerScripts
+    └── LocalScript</code></pre>
+
+                <p>This shows how music changes work. Here's the gist:</p>
+                <pre><code>MusicPlayer:SetMood("Shop")
+MusicPlayer:Play()</code></pre>
+
+                <p>Copy this pattern for your own zones.</p>
+            </section>
+
+            <section id="included-music" class="section">
+                <h2 class="section-title">Included Tracks</h2>
+                <p>The demo comes with two example tracks in:</p>
+                <pre><code>SoundService
+└── Tracks</code></pre>
+
+                <p>Moods included:</p>
+                <ul>
+                    <li>Shop</li>
+                    <li>Outside</li>
+                </ul>
+
+                <p>Swap them out with whatever you want.</p>
+            </section>
+
+            <section id="adding-music" class="section">
+                <h2 class="section-title">Adding Your Music</h2>
+                <p>Drop your Sound objects into <code>SoundService/Tracks</code></p>
+
+                <p>Optional metadata you can add:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>What it does</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Artist</td>
+                            <td>StringValue</td>
+                            <td>Shows artist name</td>
+                        </tr>
+                        <tr>
+                            <td>AlbumCover</td>
+                            <td>StringValue</td>
+                            <td>Shows album art</td>
+                        </tr>
+                        <tr>
+                            <td>Mood</td>
+                            <td>StringValue</td>
+                            <td>Groups music by mood</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="warning-box">
+                    <div class="warning-box-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Heads up
+                    </div>
+                    <p>Make sure you have permission to use the audio. Don't enable the "Playing" property - the system
+                        handles that.</p>
+                </div>
+            </section>
+
+            <section id="moods" class="section">
+                <h2 class="section-title">Moods</h2>
+                <p>Moods are basically tags that group tracks together. Use them like this:</p>
+                <pre><code>MusicPlayer:SetMood("Combat")
+MusicPlayer:SetMood("Dungeon")
+MusicPlayer:SetMood("SafeZone")</code></pre>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-info-circle"></i>
+                        Note
+                    </div>
+                    <p>If a mood doesn't exist or has no tracks, it'll just play everything.</p>
+                </div>
+            </section>
+
+            <section id="controls" class="section">
+                <h2 class="section-title">Basic Controls</h2>
+                <pre><code>MusicPlayer:Play()
+MusicPlayer:Pause()
+MusicPlayer:Stop()
+MusicPlayer:Next()
+MusicPlayer:SetMood("Shop")
+MusicPlayer:SetVolume(0.7)</code></pre>
+            </section>
+
+            <section id="implementation" class="section">
+                <h2 class="section-title">Using It In Your Game</h2>
+                <p>To use this in your actual game, copy over:</p>
+                <ul>
+                    <li>All music modules</li>
+                    <li>MusicPlayerGUI</li>
+                    <li>The Tracks folder</li>
+                </ul>
+
+                <p>Then kick it off with:</p>
+                <pre><code>_G.MusicPlayer:Play()</code></pre>
+            </section>
+
+            <section id="zones" class="section">
+                <h2 class="section-title">Music Zones</h2>
+                <p>Zones let you change music based on location. Works well for:</p>
+                <ul>
+                    <li>Shops</li>
+                    <li>Boss fights</li>
+                    <li>Safe areas</li>
+                    <li>Caves and dungeons</li>
+                    <li>Day/night areas</li>
+                </ul>
+
+                <p>Just duplicate the example zone from the demo and tweak as needed.</p>
+            </section>
+
+            <section id="performance" class="section">
+                <h2 class="section-title">Performance</h2>
+                <ul>
+                    <li>Runs client-side - no server stress</li>
+                    <li>Lightweight and optimized</li>
+                    <li>Won't tank framerate</li>
+                </ul>
+            </section>
+
+            <section id="multiplayer" class="section">
+                <h2 class="section-title">Multiplayer</h2>
+                <p>By default, zones are client-side for smooth transitions. If you want server-controlled music
+                    (synchronized across players), wire up some RemoteEvents.</p>
+            </section>
+
+            <section id="troubleshooting" class="section">
+                <h2 class="section-title">Troubleshooting</h2>
+
+                <h3 class="subsection-title">Music won't play</h3>
+                <ul>
+                    <li>Double-check your tracks are in <code>SoundService/Tracks</code></li>
+                    <li>Verify audio permissions (needs to be yours or allowed)</li>
+                    <li>Mood names are case-sensitive</li>
+                </ul>
+
+                <h3 class="subsection-title">UI is missing</h3>
+                <p>Check that <code>MusicPlayerGUI</code> is sitting in <code>StarterGui</code></p>
+
+                <h3 class="subsection-title">Zones aren't working</h3>
+                <p>Verify the zone script is in place and the parts are set up correctly</p>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-lightbulb"></i>
+                        Pro tip
+                    </div>
+                    <p>Start with the demo. Play around, see how it works, then copy what you need into your game. It's
+                        way easier than starting from scratch.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+
+        document.querySelectorAll('pre code').forEach(block => {
+            const btn = document.createElement('button');
+            btn.className = 'copy-btn';
+            btn.textContent = 'Copy';
+            btn.addEventListener('click', () => {
+                navigator.clipboard.writeText(block.textContent).then(() => {
+                    btn.textContent = 'Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = 'Copy';
+                        btn.classList.remove('copied');
+                    }, 2000);
+                });
+            });
+            block.parentElement.appendChild(btn);
+        });
+
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

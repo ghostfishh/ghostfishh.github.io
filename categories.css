@@ -1,0 +1,92 @@
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+.category-tab {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--muted);
+    padding: 10px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    transition: all var(--transition-normal);
+    letter-spacing: 1px;
+}
+.category-tab:hover {
+    border-color: var(--purple);
+    color: var(--text-bright);
+    background: rgba(157, 78, 221, 0.1);
+}
+.category-tab.active {
+    background: var(--purple);
+    color: white;
+    border-color: var(--purple);
+    box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
+}
+.category-content {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+.category-content.active {
+    display: block;
+}
+.empty-category {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--dark-card);
+    border-radius: 12px;
+    border: 1px dashed var(--border-subtle);
+}
+.empty-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+.empty-text {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: var(--text-bright);
+    margin-bottom: 10px;
+}
+.empty-subtext {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+.see-more-btn {
+    background: transparent;
+    border: none;
+    color: var(--purple);
+    font-family: var(--font-title);
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0;
+    margin: 10px 0;
+    text-decoration: underline;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+.see-more-btn:hover {
+    opacity: 1;
+}
+.project-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    margin-bottom: 10px;
+}
+.project-details.open {
+    max-height: 100px;
+}
+.detail-text {
+    font-size: 0.85rem !important;
+    color: var(--muted-dark) !important;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    border-left: 2px solid var(--purple);
+}

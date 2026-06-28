@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ghostfish - About Me</title>
+    <meta name="description" content="Get to know ghostfish - Mechatronics student from Chicago">
+    <meta name="keywords" content="ghostfish, about, mechatronics, mechanical engineering, Chicago">
+    <meta name="author" content="Ikram (ghostfish)">
+
+    <meta property="og:title" content="About ghostfish">
+    <meta property="og:description" content="Get to know ghostfish - Mechatronics student from Chicago">
+    <meta property="og:image" content="https://ghostfishh.github.io/avatar.jpg">
+    <meta property="og:url" content="https://ghostfishh.github.io/about.html">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About ghostfish">
+    <meta name="twitter:description" content="Get to know ghostfish - Mechatronics student from Chicago">
+    <meta name="twitter:image" content="https://ghostfishh.github.io/avatar.jpg">
+    <meta name="twitter:site" content="@ghostfishhhh">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="shortcut icon" href="assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/icons/site.webmanifest">
+
+    <meta name="theme-color" content="#ffffff">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="loading-screen">
+        <div class="loader-content">
+            <span class="loader-text">GHOSTFISH</span>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+    <div class="progress-bar"></div>
+
+    <header>
+        <a href="index.html" class="logo grad-text" aria-label="Homepage">GHOSTFISH</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link" aria-label="Home">Home</a></li>
+                <li><a href="about.html" class="nav-link active" aria-label="About Me">About</a></li>
+                <li><a href="work.html" class="nav-link" aria-label="My Work">Work</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="section-header reveal">
+                <h2 class="section-title">About Me</h2>
+                <div class="line-decorator"></div>
+            </div>
+
+            <div class="about-main-layout">
+                <div class="about-content">
+                    <div class="bio-section reveal">
+                        <p class="bio-intro">Hey! I'm <strong>Ghostfish</strong> (Ikram). I'm currently majoring in Finance with a minor in Engineering. I spend most of my free time doing commissions, going out with friends, and playing volleyball. I'm pretty laid-back and easy to work with, and I always try to make sure the people I work with are happy with the final result. Thank you for taking the time to check out my website! 🤙
+</p>
+                    </div>
+
+                    <div class="about-boxes-grid">
+                        <div class="data-card reveal">
+                            <div class="card-header">Facts</div>
+                            <div class="fact-slider">
+                                <div class="fact-item active">
+                                    <span class="fact-icon"><i class="fas fa-baby"></i></span>
+                                    <h4>Origin</h4>
+                                    <p>Sylhet, Bangladesh → Chicago since age 3.</p>
+                                </div>
+
+                                <div class="fact-item">
+                                    <span class="fact-icon"><i class="fas fa-graduation-cap"></i></span>
+                                    <h4>Graduation</h4>
+                                    <p id="graduation-counter">--</p>
+                                </div>
+                            </div>
+
+                            <div class="fact-controls">
+                                <button id="prevFact" aria-label="Previous Fact"><i class="fas fa-arrow-left"></i></button>
+                                <button id="nextFact" aria-label="Next Fact"><i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="data-card reveal">
+                            <div class="card-header">Info</div>
+                            <div class="spec-list">
+                                <div class="spec-item"><span>Location</span><span>Chicago, IL</span></div>
+                                <div class="spec-item"><span>Major</span><span>Finance</span></div>
+                                <div class="spec-item"><span>Time Zone</span><span>CST</span></div>
+                                <div class="spec-item"><span>Status</span><span>Student</span></div>
+                                <div class="spec-item"><span>Fav Drink</span><span>Lemonade</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header reveal" style="margin-top: 60px;">
+                    <h2 class="section-title">02. Favorites</h2>
+                    <div class="line-decorator"></div>
+                </div>
+
+                <div class="favorites-grid">
+                    
+                    <div class="fav-square-card reveal">
+                        <div class="fav-square-image">
+                            <img src="favorites/favAlbum.png" alt="favAlbum" loading="lazy">
+                            <div class="fav-overlay">
+                                <button class="fav-play-btn" data-audio="assets/audio/favAlbum.mp3">
+
+
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="fav-square-info">
+                            <h3 class="fav-category">Favorite Album</h3>
+                            <span class="fav-name">Utopia</span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="fav-square-card reveal">
+                        <div class="fav-square-image">
+                            <img src="favorites/favArtist.jpg" alt="Yeat" loading="lazy">
+                            <div class="fav-overlay">
+                                <button class="fav-play-btn" data-audio="assets/audio/favArtist.mp3">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="fav-square-info">
+                            <h3 class="fav-category">Favorite Artist</h3>
+                            <span class="fav-name">Yeat</span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="fav-square-card reveal">
+                        <div class="fav-square-image">
+                            <img src="favorites/game-cs2.webp" alt="Counter Strike 2" loading="lazy">
+                        </div>
+                        <div class="fav-square-info">
+                            <h3 class="fav-category">Favorite Game</h3>
+                            <span class="fav-name">Counter Strike 2</span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="fav-square-card reveal">
+                        <div class="fav-square-image">
+                            <img src="favorites/zombies.png" alt="Micheal's Zombies" loading="lazy">
+                        </div>
+                        <div class="fav-square-info">
+                            <h3 class="fav-category">Favorite Game</h3>
+                            <span class="fav-name">Micheal's Zombies</span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="fav-square-card reveal">
+                        <div class="fav-square-image">
+                            <img src="favorites/favAnime.png" alt="JoJo's Bizarre Adventure" loading="lazy">
+                            <div class="fav-overlay">
+                                <button class="fav-play-btn" data-audio="assets/audio/favAnime.mp3">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="fav-square-info">
+                            <h3 class="fav-category">Favorite Anime</h3>
+                            <span class="fav-name">JoJo's Bizarre Adventure</span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="fav-square-card reveal">
+                        <div class="fav-square-image">
+                            <img src="favorites/favStreamer.png" alt="Stable Ronaldo" loading="lazy">
+                        </div>
+                        <div class="fav-square-info">
+                            <h3 class="fav-category">Favorite Sport</h3>
+                            <span class="fav-name">Volleyball</span>
+                        </div>
+                    </div>
+                </div>
+
+                <blockquote class="simple-quote reveal" style="margin-top: 60px;">
+                    "I know I've been through a lot, but I'm still here." - Travis Scott
+                </blockquote>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 ghostfish uhh yeah lmao</p>
+        </footer>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+
