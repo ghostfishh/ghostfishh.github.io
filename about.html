@@ -35,6 +35,289 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        #about {
+            width: min(94vw, 1480px);
+            margin: 0 auto;
+            padding: 118px 0 56px;
+        }
+
+        .about-page {
+            display: flex;
+            flex-direction: column;
+            gap: 42px;
+        }
+
+        .about-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+            gap: clamp(32px, 5vw, 72px);
+            align-items: end;
+            padding: 28px 0 22px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .about-kicker,
+        .about-card-label,
+        .favorite-kicker {
+            font-family: var(--font-title);
+            color: var(--purple-light);
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .about-title {
+            margin: 12px 0 16px;
+            color: var(--text-bright);
+            font-family: var(--font-title);
+            font-size: clamp(2.4rem, 6vw, 5.6rem);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .about-title span {
+            color: var(--purple-light);
+        }
+
+        .about-lede {
+            max-width: 780px;
+            color: rgba(216, 216, 216, 0.84);
+            font-size: clamp(1.02rem, 1.4vw, 1.22rem);
+            line-height: 1.65;
+        }
+
+        .about-lede strong {
+            color: var(--text-bright);
+        }
+
+        .about-profile-panel {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 20px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .quick-info {
+            display: grid;
+            gap: 8px;
+        }
+
+        .quick-info-row {
+            display: grid;
+            grid-template-columns: 34px 1fr auto;
+            gap: 12px;
+            align-items: center;
+            padding: 9px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .quick-info-row i {
+            color: var(--purple-light);
+            font-size: 1rem;
+        }
+
+        .quick-info-row span {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .quick-info-row strong {
+            color: var(--text-bright);
+            font-size: 0.88rem;
+            text-align: right;
+        }
+
+        .about-facts {
+            display: grid;
+            grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+            gap: clamp(24px, 4vw, 44px);
+            align-items: start;
+        }
+
+        .fact-stage {
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .fact-stage .fact-slider {
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+        }
+
+        .fact-stage .fact-item {
+            height: auto;
+            text-align: left;
+        }
+
+        .fact-stage .fact-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            color: var(--purple-light);
+            background: rgba(86, 47, 210, 0.12);
+            border: 1px solid rgba(86, 47, 210, 0.24);
+        }
+
+        .fact-stage h4 {
+            color: var(--text-bright);
+            font-family: var(--font-title);
+            font-size: 1.12rem;
+            letter-spacing: 0;
+            margin-bottom: 8px;
+        }
+
+        .fact-stage p {
+            color: var(--muted);
+            font-size: 0.98rem;
+            line-height: 1.55;
+        }
+
+        .fact-stage .fact-controls {
+            justify-content: flex-start;
+            margin-top: 14px;
+        }
+
+        .about-note {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 20px;
+        }
+
+        .about-note h3 {
+            color: var(--text-bright);
+            font-family: var(--font-title);
+            font-size: clamp(1.5rem, 3vw, 2.45rem);
+            letter-spacing: 0;
+            line-height: 1.25;
+            margin-bottom: 10px;
+        }
+
+        .about-note p {
+            color: var(--muted);
+            line-height: 1.6;
+            max-width: 620px;
+        }
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .fav-square-card {
+            border-radius: 16px;
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .fav-square-card:hover {
+            transform: translateY(-5px);
+            box-shadow: none;
+        }
+
+        .fav-square-card:nth-child(5) {
+            grid-column: 2;
+        }
+
+        .fav-square-card:nth-child(6) {
+            grid-column: 3;
+        }
+
+        .fav-square-image {
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .fav-square-info {
+            padding-top: 14px;
+        }
+
+        .fav-category {
+            color: var(--purple-light);
+            font-family: var(--font-main);
+            font-size: 0.74rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .fav-name {
+            display: block;
+            margin-top: 6px;
+            color: var(--text-bright);
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .closing-quote {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 24px clamp(22px, 4vw, 54px);
+            border-top: 1px solid rgba(86, 47, 210, 0.38);
+            border-bottom: 1px solid rgba(86, 47, 210, 0.38);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: clamp(1.05rem, 1.7vw, 1.45rem);
+            line-height: 1.65;
+            text-align: center;
+            font-style: italic;
+        }
+
+        @media (max-width: 980px) {
+            .about-hero,
+            .about-facts {
+                grid-template-columns: 1fr;
+            }
+
+            .favorites-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .fav-square-card:nth-child(5),
+            .fav-square-card:nth-child(6) {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #about {
+                width: min(100% - 24px, 1480px);
+                padding-top: 112px;
+            }
+
+            .about-page {
+                gap: 34px;
+            }
+
+            .quick-info-row {
+                grid-template-columns: 28px 1fr;
+            }
+
+            .quick-info-row strong {
+                grid-column: 2;
+                text-align: left;
+            }
+
+            .favorites-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fav-square-card:nth-child(5),
+            .fav-square-card:nth-child(6) {
+                grid-column: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -59,152 +342,149 @@
 
     <main>
         <section id="about">
-            <div class="section-header reveal">
-                <h2 class="section-title">About Me</h2>
-                <div class="line-decorator"></div>
-            </div>
+            <div class="about-page">
+                <div class="about-hero reveal">
+                    <div>
+                        <span class="about-kicker">Profile</span>
+                        <h1 class="about-title">About <span>Me</span></h1>
+                        <p class="about-lede">Hey! I'm <strong>Ghostfish</strong> (Ikram). I'm currently majoring in Finance with a minor in Engineering. I spend most of my free time doing commissions, going out with friends, and playing volleyball. I'm pretty laid-back and easy to work with, and I always try to make sure the people I work with are happy with the final result. Thank you for taking the time to check out my website! 🤙</p>
 
-            <div class="about-main-layout">
-                <div class="about-content">
-                    <div class="bio-section reveal">
-                        <p class="bio-intro">Hey! I'm <strong>Ghostfish</strong> (Ikram). I'm currently majoring in Finance with a minor in Engineering. I spend most of my free time doing commissions, going out with friends, and playing volleyball. I'm pretty laid-back and easy to work with, and I always try to make sure the people I work with are happy with the final result. Thank you for taking the time to check out my website! 🤙
-</p>
                     </div>
 
-                    <div class="about-boxes-grid">
-                        <div class="data-card reveal">
-                            <div class="card-header">Facts</div>
-                            <div class="fact-slider">
-                                <div class="fact-item active">
-                                    <span class="fact-icon"><i class="fas fa-baby"></i></span>
-                                    <h4>Origin</h4>
-                                    <p>Sylhet, Bangladesh → Chicago since age 3.</p>
+                    <aside class="about-profile-panel" aria-label="Quick information">
+                        <span class="about-card-label">Quick Info</span>
+                        <div class="quick-info">
+                            <div class="quick-info-row"><i class="fas fa-map-pin"></i><span>Location</span><strong>Chicago, IL</strong></div>
+                            <div class="quick-info-row"><i class="fas fa-building-columns"></i><span>Major</span><strong>Finance</strong></div>
+                            <div class="quick-info-row"><i class="fas fa-clock"></i><span>Time Zone</span><strong>CST</strong></div>
+                            <div class="quick-info-row"><i class="fas fa-id-badge"></i><span>Status</span><strong>Student</strong></div>
+                            <div class="quick-info-row"><i class="fas fa-glass-water"></i><span>Fav Drink</span><strong>Lemonade</strong></div>
+                        </div>
+                    </aside>
+                </div>
+
+                <div class="about-facts">
+                    <div class="fact-stage reveal">
+                        <span class="about-card-label">Facts</span>
+                        <div class="fact-slider">
+                            <div class="fact-item active">
+                                <span class="fact-icon"><i class="fas fa-baby"></i></span>
+                                <h4>Origin</h4>
+                                <p>Sylhet, Bangladesh -> Chicago since age 3.</p>
+                            </div>
+
+                            <div class="fact-item">
+                                <span class="fact-icon"><i class="fas fa-graduation-cap"></i></span>
+                                <h4>Graduation</h4>
+                                <p id="graduation-counter">--</p>
+                            </div>
+                        </div>
+
+                        <div class="fact-controls">
+                            <button id="prevFact" aria-label="Previous Fact"><i class="fas fa-arrow-left"></i></button>
+                            <button id="nextFact" aria-label="Next Fact"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="about-note reveal">
+                        <span class="about-card-label">How I Work</span>
+                        <h3>Laid-back, direct, and focused on making the final thing feel right.</h3>
+                        <p>Most of my work comes from commissions, so I care a lot about the person on the other side being happy with what they get. I like clear communication, clean systems, and projects that feel good to actually use.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-header reveal">
+                        <h2 class="section-title">Favorites</h2>
+                        <div class="line-decorator"></div>
+                    </div>
+
+                    <div class="favorites-grid">
+                        <div class="fav-square-card reveal">
+                            <div class="fav-square-image">
+                                <img src="favorites/favAlbum.png" alt="Utopia" loading="lazy">
+                                <div class="fav-overlay">
+                                    <button class="fav-play-btn" data-audio="assets/audio/favAlbum.mp3" aria-label="Play Favorite Album audio">
+                                        <i class="fas fa-play"></i>
+                                    </button>
                                 </div>
+                            </div>
+                            <div class="fav-square-info">
+                                <h3 class="fav-category">Favorite Album</h3>
+                                <span class="fav-name">Utopia</span>
+                            </div>
+                        </div>
 
-                                <div class="fact-item">
-                                    <span class="fact-icon"><i class="fas fa-graduation-cap"></i></span>
-                                    <h4>Graduation</h4>
-                                    <p id="graduation-counter">--</p>
+                        <div class="fav-square-card reveal">
+                            <div class="fav-square-image">
+                                <img src="favorites/favArtist.jpg" alt="Yeat" loading="lazy">
+                                <div class="fav-overlay">
+                                    <button class="fav-play-btn" data-audio="assets/audio/favArtist.mp3" aria-label="Play Favorite Artist audio">
+                                        <i class="fas fa-play"></i>
+                                    </button>
                                 </div>
                             </div>
-
-                            <div class="fact-controls">
-                                <button id="prevFact" aria-label="Previous Fact"><i class="fas fa-arrow-left"></i></button>
-                                <button id="nextFact" aria-label="Next Fact"><i class="fas fa-arrow-right"></i></button>
+                            <div class="fav-square-info">
+                                <h3 class="fav-category">Favorite Artist</h3>
+                                <span class="fav-name">Yeat</span>
                             </div>
                         </div>
 
-                        <div class="data-card reveal">
-                            <div class="card-header">Info</div>
-                            <div class="spec-list">
-                                <div class="spec-item"><span>Location</span><span>Chicago, IL</span></div>
-                                <div class="spec-item"><span>Major</span><span>Finance</span></div>
-                                <div class="spec-item"><span>Time Zone</span><span>CST</span></div>
-                                <div class="spec-item"><span>Status</span><span>Student</span></div>
-                                <div class="spec-item"><span>Fav Drink</span><span>Lemonade</span></div>
+                        <div class="fav-square-card reveal">
+                            <div class="fav-square-image">
+                                <img src="favorites/game-cs2.webp" alt="Counter Strike 2" loading="lazy">
+                            </div>
+                            <div class="fav-square-info">
+                                <h3 class="fav-category">Favorite Game</h3>
+                                <span class="fav-name">Counter Strike 2</span>
+                            </div>
+                        </div>
+
+                        <div class="fav-square-card reveal">
+                            <div class="fav-square-image">
+                                <img src="favorites/zombies.png" alt="Micheal's Zombies" loading="lazy">
+                            </div>
+                            <div class="fav-square-info">
+                                <h3 class="fav-category">Favorite Game</h3>
+                                <span class="fav-name">Micheal's Zombies</span>
+                            </div>
+                        </div>
+
+                        <div class="fav-square-card reveal">
+                            <div class="fav-square-image">
+                                <img src="favorites/favAnime.png" alt="JoJo's Bizarre Adventure" loading="lazy">
+                                <div class="fav-overlay">
+                                    <button class="fav-play-btn" data-audio="assets/audio/favAnime.mp3" aria-label="Play Favorite Anime audio">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="fav-square-info">
+                                <h3 class="fav-category">Favorite Anime</h3>
+                                <span class="fav-name">JoJo's Bizarre Adventure</span>
+                            </div>
+                        </div>
+
+                        <div class="fav-square-card reveal">
+                            <div class="fav-square-image">
+                                <img src="favorites/favStreamer.png" alt="Volleyball" loading="lazy">
+                            </div>
+                            <div class="fav-square-info">
+                                <h3 class="fav-category">Favorite Sport</h3>
+                                <span class="fav-name">Volleyball</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="section-header reveal" style="margin-top: 60px;">
-                    <h2 class="section-title">02. Favorites</h2>
-                    <div class="line-decorator"></div>
-                </div>
-
-                <div class="favorites-grid">
-                    
-                    <div class="fav-square-card reveal">
-                        <div class="fav-square-image">
-                            <img src="favorites/favAlbum.png" alt="favAlbum" loading="lazy">
-                            <div class="fav-overlay">
-                                <button class="fav-play-btn" data-audio="assets/audio/favAlbum.mp3">
-
-
-                                    <i class="fas fa-play"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="fav-square-info">
-                            <h3 class="fav-category">Favorite Album</h3>
-                            <span class="fav-name">Utopia</span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="fav-square-card reveal">
-                        <div class="fav-square-image">
-                            <img src="favorites/favArtist.jpg" alt="Yeat" loading="lazy">
-                            <div class="fav-overlay">
-                                <button class="fav-play-btn" data-audio="assets/audio/favArtist.mp3">
-                                    <i class="fas fa-play"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="fav-square-info">
-                            <h3 class="fav-category">Favorite Artist</h3>
-                            <span class="fav-name">Yeat</span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="fav-square-card reveal">
-                        <div class="fav-square-image">
-                            <img src="favorites/game-cs2.webp" alt="Counter Strike 2" loading="lazy">
-                        </div>
-                        <div class="fav-square-info">
-                            <h3 class="fav-category">Favorite Game</h3>
-                            <span class="fav-name">Counter Strike 2</span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="fav-square-card reveal">
-                        <div class="fav-square-image">
-                            <img src="favorites/zombies.png" alt="Micheal's Zombies" loading="lazy">
-                        </div>
-                        <div class="fav-square-info">
-                            <h3 class="fav-category">Favorite Game</h3>
-                            <span class="fav-name">Micheal's Zombies</span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="fav-square-card reveal">
-                        <div class="fav-square-image">
-                            <img src="favorites/favAnime.png" alt="JoJo's Bizarre Adventure" loading="lazy">
-                            <div class="fav-overlay">
-                                <button class="fav-play-btn" data-audio="assets/audio/favAnime.mp3">
-                                    <i class="fas fa-play"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="fav-square-info">
-                            <h3 class="fav-category">Favorite Anime</h3>
-                            <span class="fav-name">JoJo's Bizarre Adventure</span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="fav-square-card reveal">
-                        <div class="fav-square-image">
-                            <img src="favorites/favStreamer.png" alt="Stable Ronaldo" loading="lazy">
-                        </div>
-                        <div class="fav-square-info">
-                            <h3 class="fav-category">Favorite Sport</h3>
-                            <span class="fav-name">Volleyball</span>
-                        </div>
-                    </div>
-                </div>
-
-                <blockquote class="simple-quote reveal" style="margin-top: 60px;">
+                <blockquote class="closing-quote reveal">
                     "I know I've been through a lot, but I'm still here." - Travis Scott
                 </blockquote>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2025 ghostfish uhh yeah lmao</p>
+            <p>&copy; 2026 ghostfish uhh yeah lmao</p>
         </footer>
     </main>
 
