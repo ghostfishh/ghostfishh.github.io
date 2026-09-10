@@ -46,6 +46,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+    document.querySelectorAll('header').forEach((siteHeader) => {
+        const menuButton = siteHeader.querySelector('.mobile-nav-toggle');
+        const menuIcon = menuButton?.querySelector('i');
+        const navLinks = siteHeader.querySelectorAll('.nav-link');
+        if (!menuButton) return;
+
+        const setMenu = (isOpen) => {
+            siteHeader.classList.toggle('nav-open', isOpen);
+            menuButton.setAttribute('aria-expanded', String(isOpen));
+            menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+            if (menuIcon) {
+                menuIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+            }
+        };
+
+        menuButton.addEventListener('click', () => {
+            setMenu(!siteHeader.classList.contains('nav-open'));
+        });
+
+        navLinks.forEach((link) => {
+            link.addEventListener('click', () => setMenu(false));
+        });
+    });
+
     const updateScrollProgress = () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -54,6 +78,32 @@ document.addEventListener('DOMContentLoaded', () => {
         if (progressBar) progressBar.style.width = scrolled + "%";
     };
     window.addEventListener('scroll', debounce(updateScrollProgress, 10), { passive: true });
+
+    const fundraiserModal = document.getElementById('fundraiser-modal');
+    const openFundraiserBtns = document.querySelectorAll('[data-japan-learn]');
+    const closeFundraiser = () => {
+        if (!fundraiserModal) return;
+        fundraiserModal.classList.remove('show');
+        fundraiserModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    openFundraiserBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            if (!fundraiserModal) return;
+            fundraiserModal.classList.add('show');
+            fundraiserModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    document.querySelectorAll('[data-japan-close]').forEach((btn) => {
+        btn.addEventListener('click', closeFundraiser);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeFundraiser();
+    });
 
     const updateSystemData = () => {
         const now = new Date();

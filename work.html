@@ -186,6 +186,16 @@
             overflow: hidden;
         }
 
+        .nocturne-card {
+            grid-column: 1 / -1;
+            width: min(74%, 980px);
+            justify-self: center;
+        }
+
+        .nocturne-thumb {
+            aspect-ratio: 2110 / 745;
+        }
+
         .game-thumb img,
         .project-media img,
         .project-media video {
@@ -279,6 +289,7 @@
 
         .project-media {
             position: relative;
+            display: block;
             height: 210px;
             overflow: hidden;
             background: #050505;
@@ -311,6 +322,10 @@
             .work-hero,
             .full-games-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .nocturne-card {
+                width: 100%;
             }
 
             .project-grid-lite {
@@ -360,6 +375,9 @@
                 <li><a href="work.html" class="nav-link active">Work</a></li>
             </ul>
         </nav>
+        <button class="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
     </header>
 
     <main>
@@ -372,10 +390,30 @@
                 <aside class="work-note">Feel free to close/open any sections!</aside>
             </div>
 
+            <section class="fundraiser-section reveal" aria-label="Japan trip fundraiser">
+                <div class="fundraiser-card">
+                    <div>
+                        <span class="fundraiser-eyebrow">Japan Fund</span>
+                        <h2 class="fundraiser-title">Fund my trip to Japan!</h2>
+                        <p class="fundraiser-description">Every commission payment from 9/9/26 onward goes straight toward my Japan trip fund. The goal is $8,000, and I’ll refresh this progress bar every two weeks so everyone can follow the journey with me :D</p>
+                    </div>
+                    <div class="fundraiser-progress-wrap">
+                        <div class="fundraiser-progress-label">
+                            <span>$0 USD</span>
+                            <span>$8,000 USD</span>
+                        </div>
+                        <div class="fundraiser-track" role="progressbar" aria-label="Japan trip funding progress" aria-valuemin="0" aria-valuemax="8000" aria-valuenow="0">
+                            <div class="fundraiser-fill"></div>
+                        </div>
+                        <button class="fundraiser-learn" type="button" data-japan-learn>Learn More <i class="fas fa-circle-info"></i></button>
+                    </div>
+                </div>
+            </section>
+
             <div class="work-sections">
                 <details class="work-section" open>
                     <summary>
-                        <span class="section-title-wrap"><h2>Full Games</h2><span class="section-count">02 Projects</span></span>
+                        <span class="section-title-wrap"><h2>Complete Projects</h2><span class="section-count">03 Projects</span></span>
                         <span class="section-toggle"><i class="fas fa-chevron-down"></i></span>
                     </summary>
                     <div class="section-body">
@@ -404,6 +442,22 @@
                                     <div class="game-title-row">
                                         <div><span class="game-role">Lead Scripter</span><h3>Guess The ASMR or Die</h3></div>
                                         <a class="project-link" href="https://www.roblox.com/games/128549342695196/Guess-The-ASMR-or-Die#!" target="_blank" rel="noopener noreferrer">Play <i class="fas fa-arrow-up-right-from-square"></i></a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="game-card nocturne-card reveal">
+                                <a class="game-thumb nocturne-thumb" href="https://github.com/ghostfishh/nocturne" target="_blank" rel="noopener noreferrer" aria-label="Open Nocturne on GitHub">
+                                    <img src="assets/images/nocturne.png" alt="Nocturne Discord bot thumbnail">
+                                </a>
+                                <div class="game-copy">
+                                    <div class="game-title-row">
+                                        <div><span class="game-role">Discord Bot</span><h3>Nocturne</h3></div>
+                                        <a class="project-link" href="https://github.com/ghostfishh/nocturne" target="_blank" rel="noopener noreferrer">GitHub <i class="fas fa-arrow-up-right-from-square"></i></a>
+                                    </div>
+                                    <div class="game-stats">
+                                        <span class="game-stat"><i class="fab fa-discord"></i> Discord Bot</span>
+                                        <span class="game-stat"><i class="fab fa-github"></i> Open source</span>
                                     </div>
                                 </div>
                             </article>
@@ -461,8 +515,17 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 GHOSTFISH. All rights reserved.</p>
+        <p>&copy; 2026 GHOSTFISH. All rights reserved.</p>
     </footer>
+
+    <div class="fundraiser-modal" id="fundraiser-modal" aria-hidden="true">
+        <div class="fundraiser-modal-backdrop" data-japan-close></div>
+        <div class="fundraiser-modal-content" role="dialog" aria-modal="true" aria-labelledby="fundraiser-modal-title">
+            <button class="fundraiser-modal-close" type="button" data-japan-close aria-label="Close fundraiser details"><i class="fas fa-times"></i></button>
+            <h2 id="fundraiser-modal-title">Help Make Japan Happen</h2>
+            <p>I’m planning to buy the tickets on August 26, 2028, so every commission from now until then helps move this from a dream into a real trip. Anyone who contributes, even through a small commission, will be invited to a private Discord server where I’ll share the planning, updates, and eventually the journey itself. I’ll also list contributor names here as a thank-you. I really, really want this, and every bit helps. Please and thank you 🙏🙏</p>
+        </div>
+    </div>
 
     <script>
         document.querySelectorAll('.work-section').forEach((section) => {

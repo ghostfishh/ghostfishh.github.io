@@ -58,6 +58,7 @@ button:focus,
 .nav-link:focus,
 .social-icon:focus,
 .project-link:focus,
+.fundraiser-learn:focus,
 .fav-card:focus {
     outline: 2px solid var(--purple);
     outline-offset: 4px;
@@ -112,15 +113,18 @@ button:focus,
 header {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    padding: 25px 10%;
+    min-height: 78px;
+    padding: 18px 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--overlay-medium);
-    backdrop-filter: blur(12px);
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-ghost);
+    background: rgba(8, 8, 10, 0.96);
+    backdrop-filter: blur(16px);
+    z-index: 5000;
+    border-bottom: 1px solid rgba(155, 127, 245, 0.24);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.36);
 }
 
 .logo.grad-text {
@@ -148,6 +152,20 @@ header {
     gap: 30px;
 }
 
+.mobile-nav-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(155, 127, 245, 0.34);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-bright);
+    cursor: pointer;
+    font-size: 1.05rem;
+}
+
 .nav-link {
     color: var(--muted);
     text-decoration: none;
@@ -160,6 +178,169 @@ header {
 .nav-link:hover,
 .nav-link.active {
     color: var(--purple);
+}
+
+.fundraiser-section {
+    width: min(94vw, 1480px);
+    margin: 0 auto 34px;
+    padding: 0;
+    min-height: 0;
+}
+
+.fundraiser-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.7fr);
+    gap: clamp(20px, 4vw, 42px);
+    align-items: center;
+    border: 1px solid rgba(155, 127, 245, 0.26);
+    border-radius: 12px;
+    background:
+        linear-gradient(135deg, rgba(86, 47, 210, 0.18), rgba(255, 255, 255, 0.025) 48%, rgba(86, 47, 210, 0.1)),
+        var(--dark-card);
+    padding: clamp(22px, 3vw, 34px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+.fundraiser-eyebrow {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--purple-light);
+    font-family: var(--font-title);
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.fundraiser-title {
+    margin: 0 0 12px;
+    color: var(--text-bright);
+    font-family: var(--font-title);
+    font-size: clamp(1.35rem, 3vw, 2.45rem);
+    line-height: 1.15;
+    letter-spacing: 0;
+}
+
+.fundraiser-description {
+    max-width: 820px;
+    margin: 0;
+    color: rgba(216, 216, 216, 0.76);
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
+.fundraiser-progress-wrap {
+    display: grid;
+    gap: 12px;
+}
+
+.fundraiser-progress-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    color: var(--text-bright);
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+}
+
+.fundraiser-track {
+    height: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(155, 127, 245, 0.5);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.42);
+}
+
+.fundraiser-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--purple), var(--purple-light));
+}
+
+.fundraiser-learn {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 15px;
+    border: 1px solid rgba(155, 127, 245, 0.7);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--purple-light);
+    cursor: pointer;
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all var(--transition-normal);
+}
+
+.fundraiser-learn:hover {
+    background: var(--purple);
+    color: white;
+    transform: translateX(3px);
+}
+
+.fundraiser-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.fundraiser-modal.show {
+    display: flex;
+    animation: modalFadeIn 0.25s ease;
+}
+
+.fundraiser-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(14px);
+}
+
+.fundraiser-modal-content {
+    position: relative;
+    z-index: 1;
+    width: min(92vw, 620px);
+    border: 1px solid rgba(155, 127, 245, 0.32);
+    border-radius: 14px;
+    background: var(--dark-card);
+    padding: clamp(26px, 4vw, 42px);
+    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.64);
+}
+
+.fundraiser-modal-content h2 {
+    margin: 0 0 14px;
+    color: var(--text-bright);
+    font-family: var(--font-title);
+    font-size: clamp(1.15rem, 3vw, 1.8rem);
+    line-height: 1.25;
+    letter-spacing: 0;
+}
+
+.fundraiser-modal-content p {
+    margin: 0;
+    color: rgba(216, 216, 216, 0.82);
+    line-height: 1.75;
+}
+
+.fundraiser-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-ghost);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--text-bright);
+    cursor: pointer;
 }
 
 section {
@@ -1025,8 +1206,20 @@ section {
 }
 
 @media (max-width: 768px) {
+    header {
+        min-height: 70px;
+    }
+
     section {
         padding: 100px 5%;
+    }
+
+    .fundraiser-section {
+        width: min(100% - 24px, 1480px);
+    }
+
+    .fundraiser-card {
+        grid-template-columns: 1fr;
     }
 
     .glitch-text {
@@ -1034,7 +1227,35 @@ section {
     }
 
     .nav-links {
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
         display: none;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px 5% 18px;
+        background: rgba(8, 8, 10, 0.98);
+        border-bottom: 1px solid rgba(155, 127, 245, 0.24);
+        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.42);
+    }
+
+    header.nav-open .nav-links {
+        display: flex;
+    }
+
+    .nav-links li {
+        border-top: 1px solid var(--border-ghost);
+    }
+
+    .nav-link {
+        display: block;
+        padding: 14px 0;
+        font-size: 0.86rem;
+    }
+
+    .mobile-nav-toggle {
+        display: inline-flex;
     }
 
     .modal-body {

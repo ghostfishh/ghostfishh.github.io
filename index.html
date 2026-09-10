@@ -10,14 +10,14 @@
     <meta name="author" content="Ikram (ghostfish)">
 
     <meta property="og:title" content="ghostfish's portfolio">
-    <meta property="og:description" content="ghostfish's bizzare adventure">
+    <meta property="og:description" content="ghostfish's bizarre adventure">
     <meta property="og:image" content="https://ghostfishh.github.io/banner.png">
     <meta property="og:url" content="https://ghostfishh.github.io">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ghostfish's portfolio">
-    <meta name="twitter:description" content="ghostfish's bizzare adventure">
+    <meta name="twitter:description" content="ghostfish's bizarre adventure">
     <meta name="twitter:image" content="https://ghostfishh.github.io/banner.png">
     <meta name="twitter:site" content="@ghostfishhhh">
 
@@ -348,6 +348,9 @@
                 <li><a href="work.html" class="nav-link" aria-label="My Work">Work</a></li>
             </ul>
         </nav>
+        <button class="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
     </header>
 
     <main>
@@ -363,6 +366,26 @@
                 </div>
                 <div class="banner-profile" aria-label="Ghostfish profile image">
                     <img src="assets/images/avatar.png" alt="ghostfish profile" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="fundraiser-section reveal" aria-label="Japan trip fundraiser">
+            <div class="fundraiser-card">
+                <div>
+                    <span class="fundraiser-eyebrow">Japan Fund</span>
+                    <h2 class="fundraiser-title">Fund my trip to Japan!</h2>
+                    <p class="fundraiser-description">Every commission payment from 9/9/26 onward goes straight toward my Japan trip fund. The goal is $8,000, and I’ll refresh this progress bar every two weeks so everyone can follow the journey with me :D</p>
+                </div>
+                <div class="fundraiser-progress-wrap">
+                    <div class="fundraiser-progress-label">
+                        <span>$0 USD</span>
+                        <span>$8,000 USD</span>
+                    </div>
+                    <div class="fundraiser-track" role="progressbar" aria-label="Japan trip funding progress" aria-valuemin="0" aria-valuemax="8000" aria-valuenow="0">
+                        <div class="fundraiser-fill"></div>
+                    </div>
+                    <button class="fundraiser-learn" type="button" data-japan-learn>Learn More <i class="fas fa-circle-info"></i></button>
                 </div>
             </div>
         </section>
@@ -423,6 +446,15 @@
             <p>&copy; <span id="footer-year">2026</span> ghostfish uhh yeah lmao</p>
         </footer>
     </main>
+
+    <div class="fundraiser-modal" id="fundraiser-modal" aria-hidden="true">
+        <div class="fundraiser-modal-backdrop" data-japan-close></div>
+        <div class="fundraiser-modal-content" role="dialog" aria-modal="true" aria-labelledby="fundraiser-modal-title">
+            <button class="fundraiser-modal-close" type="button" data-japan-close aria-label="Close fundraiser details"><i class="fas fa-times"></i></button>
+            <h2 id="fundraiser-modal-title">Help Make Japan Happen</h2>
+            <p>I’m planning to buy the tickets on August 26, 2028, so every commission from now until then helps move this from a dream into a real trip. Anyone who contributes, even through a small commission, will be invited to a private Discord server where I’ll share the planning, updates, and eventually the journey itself. I’ll also list contributor names here as a thank-you. I really, really want this, and every bit helps. Please and thank you 🙏🙏</p>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
     <script>

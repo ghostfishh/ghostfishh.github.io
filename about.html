@@ -129,10 +129,7 @@
         }
 
         .about-facts {
-            display: grid;
-            grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-            gap: clamp(24px, 4vw, 44px);
-            align-items: start;
+            max-width: 620px;
         }
 
         .fact-stage {
@@ -183,26 +180,6 @@
         .fact-stage .fact-controls {
             justify-content: flex-start;
             margin-top: 14px;
-        }
-
-        .about-note {
-            border-top: 1px solid var(--border-subtle);
-            padding-top: 20px;
-        }
-
-        .about-note h3 {
-            color: var(--text-bright);
-            font-family: var(--font-title);
-            font-size: clamp(1.5rem, 3vw, 2.45rem);
-            letter-spacing: 0;
-            line-height: 1.25;
-            margin-bottom: 10px;
-        }
-
-        .about-note p {
-            color: var(--muted);
-            line-height: 1.6;
-            max-width: 620px;
         }
 
         .favorites-grid {
@@ -274,8 +251,7 @@
         }
 
         @media (max-width: 980px) {
-            .about-hero,
-            .about-facts {
+            .about-hero {
                 grid-template-columns: 1fr;
             }
 
@@ -338,6 +314,9 @@
                 <li><a href="work.html" class="nav-link" aria-label="My Work">Work</a></li>
             </ul>
         </nav>
+        <button class="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
     </header>
 
     <main>
@@ -363,6 +342,26 @@
                     </aside>
                 </div>
 
+                <section class="fundraiser-section reveal" aria-label="Japan trip fundraiser">
+                    <div class="fundraiser-card">
+                        <div>
+                            <span class="fundraiser-eyebrow">Japan Fund</span>
+                            <h2 class="fundraiser-title">Fund my trip to Japan!</h2>
+                            <p class="fundraiser-description">Every commission payment from 9/9/26 onward goes straight toward my Japan trip fund. The goal is $8,000, and I’ll refresh this progress bar every two weeks so everyone can follow the journey with me :D</p>
+                        </div>
+                        <div class="fundraiser-progress-wrap">
+                            <div class="fundraiser-progress-label">
+                                <span>$0 USD</span>
+                                <span>$8,000 USD</span>
+                            </div>
+                            <div class="fundraiser-track" role="progressbar" aria-label="Japan trip funding progress" aria-valuemin="0" aria-valuemax="8000" aria-valuenow="0">
+                                <div class="fundraiser-fill"></div>
+                            </div>
+                            <button class="fundraiser-learn" type="button" data-japan-learn>Learn More <i class="fas fa-circle-info"></i></button>
+                        </div>
+                    </div>
+                </section>
+
                 <div class="about-facts">
                     <div class="fact-stage reveal">
                         <span class="about-card-label">Facts</span>
@@ -386,11 +385,6 @@
                         </div>
                     </div>
 
-                    <div class="about-note reveal">
-                        <span class="about-card-label">How I Work</span>
-                        <h3>Laid-back, direct, and focused on making the final thing feel right.</h3>
-                        <p>Most of my work comes from commissions, so I care a lot about the person on the other side being happy with what they get. I like clear communication, clean systems, and projects that feel good to actually use.</p>
-                    </div>
                 </div>
 
                 <div>
@@ -442,11 +436,11 @@
 
                         <div class="fav-square-card reveal">
                             <div class="fav-square-image">
-                                <img src="favorites/zombies.png" alt="Micheal's Zombies" loading="lazy">
+                                <img src="favorites/zombies.png" alt="Michael's Zombies" loading="lazy">
                             </div>
                             <div class="fav-square-info">
                                 <h3 class="fav-category">Favorite Game</h3>
-                                <span class="fav-name">Micheal's Zombies</span>
+                                <span class="fav-name">Michael's Zombies</span>
                             </div>
                         </div>
 
@@ -487,6 +481,15 @@
             <p>&copy; 2026 ghostfish uhh yeah lmao</p>
         </footer>
     </main>
+
+    <div class="fundraiser-modal" id="fundraiser-modal" aria-hidden="true">
+        <div class="fundraiser-modal-backdrop" data-japan-close></div>
+        <div class="fundraiser-modal-content" role="dialog" aria-modal="true" aria-labelledby="fundraiser-modal-title">
+            <button class="fundraiser-modal-close" type="button" data-japan-close aria-label="Close fundraiser details"><i class="fas fa-times"></i></button>
+            <h2 id="fundraiser-modal-title">Help Make Japan Happen</h2>
+            <p>I’m planning to buy the tickets on August 26, 2028, so every commission from now until then helps move this from a dream into a real trip. Anyone who contributes, even through a small commission, will be invited to a private Discord server where I’ll share the planning, updates, and eventually the journey itself. I’ll also list contributor names here as a thank-you. I really, really want this, and every bit helps. Please and thank you 🙏🙏</p>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
